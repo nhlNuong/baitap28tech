@@ -6,8 +6,8 @@ using ll = long long;
 ll count(ll n){
 	int cnt = 0;
 	for(ll i = 5; i <= n; i*=5){
-		cnt += n/i;
-		cnt %= (int)(1e9 + 7);
+		cnt += (n%(int)(1e9+7))/(i%(int)(1e9+7));
+		cnt %= (int)(1e9+7);
 	}
 	return cnt;
 }

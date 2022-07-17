@@ -3,18 +3,20 @@
 using namespace std;
 using ll = long long;
 
+bool check1(ll n){
+	if(n%111111111==0 || n%111111111==0 || n%11111111==0||n%1111111==0||n%111111==0||n%11111==0||n%1111==0||n%111==0||n%11==0)
+		return 1;
+	return 0;
+}
+
 bool check(ll n){
-	int a[1000],b[10] = {0}, k = 0;
-	while(n){
-		a[k++] = n%10;
-		if(a[0] < n%10) return 0;
-		n/=10;
-		b[a[k-1]]++;
+	int m = 111111111;
+	while(n > 10){
+		if(check1(n)) return 1;
+		n%=m;
+		m/=10;
 	}
-	for(int i = 0; i<10; i++){
-		if(b[i] != 0 && b[i] < 2 && i != a[k-1]) return 0;
-	}
-	return 1;
+	return 0;
 }
 
 int main() {

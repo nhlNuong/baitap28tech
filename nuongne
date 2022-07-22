@@ -1,0 +1,167 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int nto(int n){
+    if(n < 2) return 0;
+    else{
+            for(int i = 2; i <= sqrt(n); i++){
+                if( n % i == 0) return 0;
+                    
+            }
+            return 1;
+    } 
+}
+
+int tongchusocuan(int n){
+    int sum = 0;
+    while(n){
+        sum += n%10;
+        n/=10;
+    }
+    return sum;
+}
+
+int tongchusochancuan(int n){
+    int sum = 0;
+    while(n){
+        int socuoi = n % 10;
+        if(socuoi % 2 == 0) sum += socuoi;
+        n /= 10;
+    }
+    return sum;
+}
+
+int tongchusocuanlasonguyento(int n){
+    int sum = 0;
+    while(n){
+        if(nto(n%10)){
+            sum += n%10;
+        }
+        n/=10;
+    }
+    return sum;
+}
+
+int solatnguoccuan(int n){
+    int res = 0;
+    while(n){
+        int socuoi = n % 10;
+        res = res * 10 + socuoi;
+        n /= 10;
+    }
+    return res;
+}
+
+int soluonguoccuanlasonguyento(int n){
+      int cnt = 0;
+    for(int i = 2; i <= n ; i++){
+        if(n%i == 0 && nto(i)) cnt++;
+    }
+    return cnt;
+}
+
+int uocnguyentolonnhatcuan(int n){
+    for(int i = sqrt(n) ; i >= 2; i--){
+        if(n % i == 0 && nto(i)){
+            return i;
+            break;
+        } 
+    }
+}
+
+int tontaisau(int n){
+    int ok = 0;
+    while(n > 0){
+        int socuoi = n % 10;
+        if( socuoi == 6) ok++;
+        n /= 10;
+    }
+    if(ok == 0) return 0;
+    else return 1;
+}
+
+int tongchiahetcho8(int n){
+    int tong = 0;
+    while(n > 0){
+        int socuoi = n % 10;
+        tong = tong + socuoi;
+        n /= 10;
+    }
+    if(tong % 8 == 0) return 1;
+    else return 0;
+}
+
+long long tonggiaithuacacchuso(int n){
+    int tong = 0;
+    while(n > 0){
+        int socuoi = n % 10;
+        int giaithua = 1;
+        for(int i = 2; i <= socuoi; i++) giaithua *= i;
+        tong = tong + giaithua;
+        n /= 10;
+    }
+    return tong;
+}
+
+int kiemtrachusogiongnhau(int n){
+    int a = n % 10;
+    n /= 10;
+    while(n > 0){
+        if(n != a) return 0;
+        n /= 10;
+        
+    }
+    return 1;
+}
+int testmuoihai(int n){
+    int a = n%10 , b;
+    n/=10;
+    while(n){
+        b = n%10;
+        if(b > a) return 0;
+        n/=10;
+    }
+    return 1;
+}
+int dem(int a){
+   int dem = 0;
+    while(a){
+        dem++;
+        a /= 10;
+    }
+    return dem;
+}
+
+long long testmuoiba(int n){
+    long long sum = 0;
+    int a=dem(n);
+    while(n){
+    int socuoi = n % 10;
+        sum += (long long)pow(socuoi,a);
+        n /= 10;
+    }
+    return sum;
+}
+int main() {
+    int n;
+    cin >> n;
+    
+    cout << nto(n) << endl;
+    cout << tongchusocuan(n) << endl;
+    cout << tongchusochancuan(n) << endl;
+    cout << tongchusocuanlasonguyento(n) << endl;
+    cout << solatnguoccuan(n) << endl;
+    cout << soluonguoccuanlasonguyento(n) << endl;
+    cout << uocnguyentolonnhatcuan(n) << endl;
+    cout << tontaisau(n) << endl;
+    cout << tongchiahetcho8(n) << endl;
+    cout << tonggiaithuacacchuso(n) << endl;
+    cout << kiemtrachusogiongnhau(n) << endl;
+    cout << testmuoihai(n) << endl;
+    cout << testmuoiba(n) << endl;
+
+    return 0;
+
+}
+                                    
